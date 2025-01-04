@@ -19,6 +19,7 @@ import {
 } from "../../hooks/useQuery";
 // Interfaces
 import ProductProps from "../../interfaces/iProducts";
+import ApiErrorProps from "../../interfaces/iApiError";
 // Components
 import Table from "../../components/tableProducts";
 import DialogProducts from "../../components/dialogProducts";
@@ -96,15 +97,24 @@ export default function HomePage() {
 
       setProductDialog(false);
       reset();
-    } catch (error) {
-      console.log(error);
-      toast.current?.show({
-        severity: "error",
-        summary: "Erro",
-        detail: "Erro ao salvar produto",
-      });
+    } catch (error: unknown) {
+      const errorData = error as ApiErrorProps;
+      if (errorData?.response?.data?.message) {
+        toast.current?.show({
+          severity: "error",
+          summary: "Erro",
+          detail: errorData.response.data.message,
+        });
+      } else {
+        toast.current?.show({
+          severity: "error",
+          summary: "Erro",
+          detail: "Erro ao salvar produto",
+        });
+      }
     }
   };
+
   const editProduct = (product: ProductProps) => {
     setProduct({ ...product });
     setProductDialog(true);
@@ -127,13 +137,15 @@ export default function HomePage() {
         setDeleteProductDialog(false);
         setProduct(null);
       }
-    } catch (error) {
-      console.log(error);
-      toast.current?.show({
-        severity: "error",
-        summary: "Erro",
-        detail: "Erro ao deletar produto",
-      });
+    } catch (error: unknown) {
+      const errorData = error as ApiErrorProps;
+      if (errorData?.response?.data?.message) {
+        toast.current?.show({
+          severity: "error",
+          summary: "Erro",
+          detail: errorData.response.data.message,
+        });
+      }
     }
   };
 
