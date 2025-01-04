@@ -1,0 +1,58 @@
+.root-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .error-text {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .error-text .bold {
+    font-weight: bold;
+  }
+  
+  .error-code-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .error-code {
+    color: #E75252;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  
+  .styled-button.p-button {
+    margin-top: 15px;
+    border: none;
+    width: 8em;
+    height: 3em;
+    border-radius: 3em;
+    background-color: #00ab55;
+    text-transform: none;
+    transition: all 450ms ease-in-out;
+  }
+  
+  .styled-button.p-button:hover {
+    background: linear-gradient(0deg, #266901, #007900);
+    box-shadow: 
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+      inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+      0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+      0px 0px 180px 0px #000000;
+    transform: translateY(-2px);
+  }
+  
+  .styled-button.p-button .p-button-label {
+    font-weight: bold;
+    color: white;
+  }
